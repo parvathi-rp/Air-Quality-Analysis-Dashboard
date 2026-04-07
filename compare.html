@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare AQI Levels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Main Heading -->
+<h1>Compare AQI Levels</h1>
+
+<!-- Navigation -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="data.html">Data</a>
+    <a href="compare.html">Compare</a>
+</nav>
+
+<!-- About Section -->
+<h2>City AQI Comparison</h2>
+<p>This chart compares the Air Quality Index (AQI) of major Indian cities for easy analysis.</p>
+
+<!-- Chart Section -->
+<canvas id="compareChart" width="600" height="300"></canvas>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const cityNames = ["Delhi", "Mumbai", "Chennai", "Kolkata", "Bangalore", "Patna", "Lucknow", "Pune"];
+    const aqiValues = [180, 95, 110, 70, 40, 150, 120, 55];
+
+    const bgColors = aqiValues.map(aqi => {
+        if (aqi <= 50) return 'rgba(40, 167, 69, 0.7)';       // Green
+        else if (aqi <= 100) return 'rgba(255, 193, 7, 0.7)'; // Yellow
+        else return 'rgba(220, 53, 69, 0.7)';                 // Red
+    });
+
+    const borderColors = bgColors.map(c => c.replace('0.7', '1'));
+
+    const ctx = document.getElementById('compareChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: cityNames,
+            datasets: [{
+                label: 'AQI Levels',
+                data: aqiValues,
+                backgroundColor: bgColors,
+                borderColor: borderColors,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `AQI: ${context.raw}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'AQI Value'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Cities'
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 8
+                }
+            }
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

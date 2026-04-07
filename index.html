@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Quality Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Main Heading -->
+<h1>Air Quality Analysis Dashboard</h1>
+
+<!-- Navigation -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="data.html">Data</a>
+    <a href="compare.html">Compare</a>
+</nav>
+
+<!-- About Section -->
+<h2>About</h2>
+<p>This website analyzes air pollution levels (AQI) in major Indian cities using statistical data.</p>
+
+<!-- City Cards Section -->
+<h3>City AQI Overview</h3>
+<div class="cities">
+    <div class="city-card" data-aqi="180">
+        <h2>Delhi</h2>
+        <p>AQI: 180 (Unhealthy)</p>
+        <p>PM2.5: 120 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="95">
+        <h2>Mumbai</h2>
+        <p>AQI: 95 (Moderate)</p>
+        <p>PM2.5: 90 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="110">
+        <h2>Chennai</h2>
+        <p>AQI: 110 (Moderate)</p>
+        <p>PM2.5: 100 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="70">
+        <h2>Kolkata</h2>
+        <p>AQI: 70 (Moderate)</p>
+        <p>PM2.5: 80 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="40">
+        <h2>Bangalore</h2>
+        <p>AQI: 40 (Good)</p>
+        <p>PM2.5: 60 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="150">
+        <h2>Patna</h2>
+        <p>AQI: 150 (Unhealthy)</p>
+        <p>PM2.5: 130 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="120">
+        <h2>Lucknow</h2>
+        <p>AQI: 120 (Unhealthy for Sensitive)</p>
+        <p>PM2.5: 110 µg/m³</p>
+    </div>
+
+    <div class="city-card" data-aqi="55">
+        <h2>Pune</h2>
+        <p>AQI: 55 (Moderate)</p>
+        <p>PM2.5: 75 µg/m³</p>
+    </div>
+</div>
+
+<!-- AQI Bar Chart -->
+<h3>AQI Levels Comparison</h3>
+<canvas id="aqiChart" width="400" height="200"></canvas>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
